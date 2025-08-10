@@ -26,6 +26,7 @@
     - microdnf install findutils
     - ""
     - chmod +x android/gradlew
+    - cd android
     - android/gradlew assembleRelease
     setup_commands:
     - microdnf install unzip
