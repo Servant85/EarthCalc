@@ -16,3 +16,14 @@
     pre_start_simulators:
     - iPhone SE (3rd generation)
     xcode_version: 16.1.0
+  - action: Execute command 2
+    type: NATIVE_BUILD_MAC
+    commands:
+    - "# Example"
+    - "# xcodebuild -resolvePackageDependencies -workspace <your_workspace_name> -scheme <your_scheme_name>"
+    - ""
+    shell: BASH
+    pre_start_simulators:
+    - iPhone SE (3rd generation)
+    xcode_version: 14.3.1
+    vm_from_prev_action: true
