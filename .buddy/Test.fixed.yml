@@ -6,23 +6,3 @@
   - type: PUSH
   fail_on_prepare_env_warning: true
   resources: SMALL
-  actions:
-  - action: Execute command
-    type: NATIVE_BUILD_MAC
-    commands:
-    - 'xcodebuild -resolvePackageDependencies -workspace <your_workspace_name> -scheme <your_scheme_name> '
-    shell: BASH
-    sync_paths:
-    - pipeline_path: /
-      vm_path: /Users/buddy/build
-      direction: PIPELINE_TO_VM
-      excludes: ""
-      includes: ""
-    - pipeline_path: /.buddy/
-      vm_path: /Users/buddy/build
-      direction: VM_TO_PIPELINE
-      excludes: ""
-      includes: ""
-    pre_start_simulators:
-    - iPhone SE (3rd generation)
-    xcode_version: 15.4.0
