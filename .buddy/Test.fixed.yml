@@ -19,7 +19,7 @@
       direction: PIPELINE_TO_VM
       excludes: ""
       includes: ""
-    - pipeline_path: /.buddy/
+    - pipeline_path: /.buddy/*.ipa
       vm_path: /Users/buddy/build
       direction: VM_TO_PIPELINE
       excludes: ""
