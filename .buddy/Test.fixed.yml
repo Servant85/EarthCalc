@@ -27,3 +27,13 @@
     pre_start_simulators:
     - iPhone SE (3rd generation)
     xcode_version: 15.4.0
+  - action: cordova build ios --release
+    type: NATIVE_BUILD_MAC_CORDOVA
+    commands:
+    - cordova build ios --release
+    shell: BASH
+    pre_start_simulators:
+    - iPhone SE (3rd generation)
+    node_version: 22
+    xcode_version: 15.4.0
+    vm_from_prev_action: true
