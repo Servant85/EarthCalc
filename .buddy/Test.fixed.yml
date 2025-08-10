@@ -6,3 +6,13 @@
   - type: PUSH
   fail_on_prepare_env_warning: true
   resources: SMALL
+  actions:
+  - action: Execute command
+    type: NATIVE_BUILD_MAC
+    commands:
+    - "# Example"
+    - "# xcodebuild -resolvePackageDependencies -workspace <your_workspace_name> -scheme <your_scheme_name>"
+    shell: BASH
+    pre_start_simulators:
+    - iPhone SE (3rd generation)
+    xcode_version: 15.4.0
