@@ -1,0 +1,12 @@
+{
+	"appId": "com.example.earthcalc",
+	"appName": "토목공사 재료 계산기",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https",
+		"url": "http://localhost:5000"
+	},
+	"android": {
+		"allowMixedContent": true
+	}
+}
