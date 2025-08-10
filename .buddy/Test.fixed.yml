@@ -10,10 +10,8 @@
   - action: Execute command
     type: NATIVE_BUILD_MAC
     commands:
-    - "# Example"
+    - cd platforms/ios
     - xcodebuild -resolvePackageDependencies -workspace myApp.xcworkspace -scheme myApp
-    - ""
-    - ""
     shell: BASH
     sync_paths:
     - pipeline_path: /
