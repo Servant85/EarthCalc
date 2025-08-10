@@ -23,8 +23,8 @@
     - ' yes | "$ANDROID_HOME/cmdline-tools/tools/bin/sdkmanager" --licenses'
     - fi
     - ""
-    - chmod +x android/gradlew
-    - /android/gradlew assembleRelease
+    - chmod +x ./gradlew
+    - ./gradlew assembleRelease
     setup_commands:
     - microdnf install unzip
     cached_dirs:
