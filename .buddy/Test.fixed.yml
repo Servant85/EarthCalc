@@ -11,14 +11,9 @@
     type: NATIVE_BUILD_MAC
     commands:
     - "# Example"
-    - "# xcodebuild -resolvePackageDependencies -workspace <your_workspace_name> -scheme <your_scheme_name>"
+    - xcodebuild -resolvePackageDependencies -workspace <your_workspace_name> -scheme <your_scheme_name>
     - ""
-    - echo "Running Cordova build for iOS release..."
-    - cordova build ios --release
     - ""
-    - echo "Publishing artifacts..."
-    - mkdir -p buddy_artifacts
-    - cp platforms/ios/build/device/*.ipa buddy_artifacts/
     shell: BASH
     sync_paths:
     - pipeline_path: /
