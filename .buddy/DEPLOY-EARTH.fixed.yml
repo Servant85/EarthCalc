@@ -23,6 +23,8 @@
     - ' yes | "$ANDROID_HOME/cmdline-tools/tools/bin/sdkmanager" --licenses'
     - fi
     - ""
+    - microdnf install findutils
+    - ""
     - chmod +x android/gradlew
     - android/gradlew assembleRelease
     setup_commands:
