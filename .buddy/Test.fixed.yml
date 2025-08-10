@@ -6,3 +6,66 @@
   - type: PUSH
   fail_on_prepare_env_warning: true
   resources: SMALL
+  actions:
+  - action: echo "Build script finished."
+    type: BUILD
+    docker_image_name: library/openjdk
+    docker_image_tag: 24
+    execute_commands:
+    - "#!/bin/bash"
+    - ""
+    - "# Define Android SDK path and Command-line Tools version"
+    - ANDROID_HOME="/opt/android/sdk"
+    - "CMDLINE_TOOLS_VERSION=\"11076708\" # Use a specific version for stability"
+    - ""
+    - "# Check if ANDROID_HOME is set and writable"
+    - "if [ -z \"$ANDROID_HOME\" ]; then"
+    - "    echo \"Error: ANDROID_HOME is not set.\""
+    - '    exit 1'
+    - fi
+    - "if [ ! -w \"$(dirname \"$ANDROID_HOME\")\" ]; then"
+    - "    echo \"Error: Directory $(dirname \"$ANDROID_HOME\") is not writable. Please check permissions.\""
+    - '    exit 1'
+    - fi
+    - ""
+    - "# Set SDK PATH"
+    - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+    - ""
+    - "# Install Android Command-line Tools if not present"
+    - "if [ ! -d \"$ANDROID_HOME/cmdline-tools/latest\" ]; then"
+    - '    echo "Android Command-line Tools not found. Installing..."'
+    - '    '
+    - "    # Create necessary directories"
+    - '    mkdir -p "$ANDROID_HOME/cmdline-tools"'
+    - '    '
+    - "    # Download and unzip Command-line Tools"
+    - "    CMDLINE_TOOLS_URL=\"https://dl.google.com/android/repository/commandlinetools-linux-${CMDLINE_TOOLS_VERSION}_latest.zip\""
+    - '    curl -o "$ANDROID_HOME/sdk.zip" "$CMDLINE_TOOLS_URL"'
+    - '    unzip "$ANDROID_HOME/sdk.zip" -d "$ANDROID_HOME/cmdline-tools"'
+    - '    rm "$ANDROID_HOME/sdk.zip"'
+    - '    '
+    - "    # Move unzipped content to the 'latest' directory"
+    - '    mv "$ANDROID_HOME/cmdline-tools/cmdline-tools" "$ANDROID_HOME/cmdline-tools/latest"'
+    - ""
+    - "    # Accept licenses"
+    - '    echo "Accepting Android SDK licenses..."'
+    - '    yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses'
+    - fi
+    - ""
+    - "# Ensure Gradle Wrapper has execute permissions"
+    - "if [ ! -x \"./gradlew\" ]; then"
+    - '    echo "Setting execute permissions for gradlew..."'
+    - '    chmod +x gradlew'
+    - fi
+    - ""
+    - "# Build the release version"
+    - echo "Starting release build..."
+    - ./gradlew assembleRelease
+    - ""
+    - echo "Build script finished."
+    setup_commands:
+    - microdnf install unzip
+    cached_dirs:
+    - /root/.gradle
+    - /opt/android/sdk
+    shell: BASH
