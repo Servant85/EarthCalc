@@ -24,7 +24,7 @@
     - fi
     - ""
     - chmod +x /root/.gradle
-    - ./gradlew assembleRelease
+    - android/gradlew assembleRelease
     setup_commands:
     - microdnf install unzip
     cached_dirs:
