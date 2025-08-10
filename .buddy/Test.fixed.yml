@@ -11,7 +11,7 @@
     type: NATIVE_BUILD_MAC
     commands:
     - "# Example"
-    - xcodebuild -resolvePackageDependencies -workspace <your_workspace_name> -scheme <your_scheme_name>
+    - xcodebuild -resolvePackageDependencies -workspace myApp.xcworkspace -scheme myApp
     - ""
     - ""
     shell: BASH
